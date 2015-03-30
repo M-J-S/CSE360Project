@@ -1,0 +1,1 @@
+This folder is part of increment 1 and has the schedule and class diagram and descriptions Team 18 worked on.
