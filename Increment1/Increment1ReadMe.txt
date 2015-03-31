@@ -1,1 +1,2 @@
 This folder is part of increment 1 and has the schedule and class diagram and descriptions Team 18 worked on.
+Increment 1 was the GitHub repository creation along with the UML design and the creation of methods and attributes used.

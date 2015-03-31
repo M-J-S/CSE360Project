@@ -1,1 +1,2 @@
 This folder is part of increment 2 and has the code team 18 worked on for the login menu.
+Increment 2 deals with the GUI of the login menu involving the skeleton display, connect I/O, and functional testing.
