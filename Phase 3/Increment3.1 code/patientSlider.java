@@ -1,13 +1,4 @@
-/**********************************************************
-NOTE: *change import package patientGUI accordingly line 7 
-      *delete commented method at 824 once project is finalized and method is not used
-      *note: line 776 contains commented method that can possibly change the printwriter
-                for the patient's symptoms data
-      *if line 776 is considered, line 89 patientSlider needs to be able to pass through an object
-                for patient's username to make the printWriter work
-***********************************************************/
-
-package patientGui;
+package simplelogin;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -18,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
@@ -31,10 +23,11 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 
-//class creating symptom slider for patient to enter data 
+ 
+ 
 public class patientSlider extends JFrame
 {
-    //instantiating objects and variables for the slider GUI
+ 
     private static final long serialVersionUID = 1L;
  
     private JSlider slider1 ;
@@ -47,6 +40,7 @@ public class patientSlider extends JFrame
     private JSlider slider8 ;
     private JSlider slider9 ;
     private JSlider slider10 ;
+    
     
     private JLabel lbl1 ;
     private JLabel lbl2 ;
@@ -85,7 +79,7 @@ public class patientSlider extends JFrame
     
 	JButton b;
 
-    //class set up structures patientSlider once method is called upon
+ 
     public patientSlider() {
         super("patientGUI");
         setAlwaysOnTop(true);
@@ -103,7 +97,7 @@ public class patientSlider extends JFrame
         c.setLayout(new GridLayout(11,1));
         
  
-        /****************** Labels Properties ***************************/
+        /****************** Labels Properties ********************************/
         lbl1 = new JLabel("Pain");
         lbl2 = new JLabel("Tiredness");
         lbl3 = new JLabel("Nausea");
@@ -152,7 +146,7 @@ public class patientSlider extends JFrame
         txt9 = new JTextField(4);
         txt9.setToolTipText("Set Value in Range between 0 - 10 ") ;
         
-        /****************** TextField10 Properties ********************************/
+        /****************** TextField9 Properties ********************************/
         txt10 = new JTextField(4);
         lbl10.setToolTipText("Enter any symptom you're experiencing not listed above") ;
         txt10.setToolTipText("Set Value in Range between 0 - 10 ") ;
@@ -269,7 +263,7 @@ public class patientSlider extends JFrame
         slider10.setPreferredSize(new Dimension(500,50));
         
         
-        /*************************** Controls Events1 ******************************/
+        /*************************** Controls Events1 ************************************/
         //When Changing Slider 1 Cursor...do this
         slider1.addChangeListener(new ChangeListener() {
             @Override
@@ -310,8 +304,7 @@ public class patientSlider extends JFrame
         });
         /****************************************************************/
         
-
-        /*************************** Controls Events2 *******************/
+        /*************************** Controls Events2 ************************************/
         //When Changing Slider 2 Cursor...do this
         slider2.addChangeListener(new ChangeListener() {
             @Override
@@ -352,9 +345,8 @@ public class patientSlider extends JFrame
         });
         /****************************************************************/
         
-
-        /*************************** Controls Events3 *******************/
-        //When Changing Slider 3 Cursor...do this
+        /*************************** Controls Events3 ************************************/
+        //When Changing Slider 2 Cursor...do this
         slider3.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -394,9 +386,8 @@ public class patientSlider extends JFrame
         });
         /****************************************************************/
         
-
-        /*************************** Controls Events4 *******************/
-        //When Changing Slider 4 Cursor...do this
+        /*************************** Controls Events4 ************************************/
+        //When Changing Slider 2 Cursor...do this
         slider4.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -436,9 +427,8 @@ public class patientSlider extends JFrame
         });
         /****************************************************************/
         
-
-        /*************************** Controls Events5 *******************/
-        //When Changing Slider 5 Cursor...do this
+        /*************************** Controls Events5 ************************************/
+        //When Changing Slider 2 Cursor...do this
         slider5.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -478,9 +468,8 @@ public class patientSlider extends JFrame
         });
         /****************************************************************/
         
-
-        /*************************** Controls Events6 *******************/
-        //When Changing Slider 6 Cursor...do this
+        /*************************** Controls Events6 ************************************/
+        //When Changing Slider 2 Cursor...do this
         slider6.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -520,9 +509,8 @@ public class patientSlider extends JFrame
         });
         /****************************************************************/
         
-
-        /*************************** Controls Events7 *******************/
-        //When Changing Slider 7 Cursor...do this
+        /*************************** Controls Events7 ************************************/
+        //When Changing Slider 2 Cursor...do this
         slider7.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -561,10 +549,9 @@ public class patientSlider extends JFrame
             }
         });
         /****************************************************************/
-
         
-        /*************************** Controls Events8 *******************/
-        //When Changing Slider 8 Cursor...do this
+        /*************************** Controls Events8 ************************************/
+        //When Changing Slider 2 Cursor...do this
         slider8.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -604,9 +591,8 @@ public class patientSlider extends JFrame
         });
         /****************************************************************/
         
-
-        /*************************** Controls Events9 *******************/
-        //When Changing Slider 9 Cursor...do this
+        /*************************** Controls Events9 ************************************/
+        //When Changing Slider 2 Cursor...do this
         slider9.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -645,10 +631,8 @@ public class patientSlider extends JFrame
             }
         });
         /****************************************************************/
-
-
-        /*************************** Controls Events10 ******************/
-        //When Changing Slider 10 Cursor...do this
+        /*************************** Controls Events10 ************************************/
+        //When Changing Slider 2 Cursor...do this
         slider10.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -689,7 +673,7 @@ public class patientSlider extends JFrame
         /****************************************************************/
         
        
-        //generates all the panels in the GUI with the texts, labels, and sliders
+ 
         panel1 = new JPanel();
         c.add(panel1);
         panel1.add(lbl1);
@@ -752,8 +736,7 @@ public class patientSlider extends JFrame
         panel10.add(txt10);
         panel10.add(slider10);
         
-
-        /*************************************Submit Button & Related actions******************************/
+        /***************************************Submit Button********************************************/
         panel11 = new JPanel();
         c.add(panel11);
         b = new JButton("Submit");
@@ -762,23 +745,23 @@ public class patientSlider extends JFrame
         panel11.add(b);
         
         b.addActionListener(new ActionListener() {
-
-            //upon submit button entered, data from patient is collected and generated in a .txt file
             public void actionPerformed(ActionEvent e) {
             	//after submit button is clicked text file is written with symptom results and new text box pops up
             	//confirming submission
+            	
+            	File file = new File("C:\\Patient");
+            	
+            	if (!file.exists()) {
+            		if (file.mkdir()) {
+            			System.out.println("Directory is created!");
+            		} else {
+            			System.out.println("Failed to create directory!");
+            		}
+            	}
+            	
             	PrintWriter out = null;
 				try {
-					out = new PrintWriter("filename.txt");
-
-
-                    //below is commented file name writer for each individual patient when the data needs to be generated
-                    //  username is based upon patient's username but object must be passed through to make work
-                    //  further research is needed to prove printwriter works
-                    //out = new PrintWriter(username + ".txt");
-
-
-
+					out = new PrintWriter("C:\\Patient\\Patient.txt");
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -811,21 +794,25 @@ public class patientSlider extends JFrame
             	out.println(valu9);
             	
     			int valu10 = slider10.getValue();
-            	out.println(valu10);
+    			String valu11 = lbl10.getText();
+            	out.println(valu11 + ": " + valu10);
+            	
+            	
+            	
+            	
             	
             	out.close();
+            
             }
          });
         /***********************************************************************************************/
+ 
+ 
         setVisible(true);
     }
-}
-
-//Class is used only if method from line 220 in GUI.java is not used to generate the slider for patient
-/*public class SliderFrame {
+ 
     public static void main(String args[])
     {
-        patientSlider frame = new patientSlider();
-        frame.setVisible(true);
+        new patientSlider();
     }
-}*/
+}

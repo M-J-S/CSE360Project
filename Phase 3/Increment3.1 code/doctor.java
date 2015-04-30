@@ -8,7 +8,7 @@ public class doctor {
 	static JFrame frame;
 
 	
-	doctor (){
+	public doctor (){
 		
 		frame = new JFrame ("Doctor ");
 		frame.setSize(500,200);
