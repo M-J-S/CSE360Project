@@ -12,6 +12,9 @@ import java.awt.event.FocusListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,6 +32,8 @@ public class patientSlider extends JFrame
 {
  
     private static final long serialVersionUID = 1L;
+
+	protected static final String Clock = null;
  
     private JSlider slider1 ;
     private JSlider slider2 ;
@@ -749,59 +754,156 @@ public class patientSlider extends JFrame
             	//after submit button is clicked text file is written with symptom results and new text box pops up
             	//confirming submission
             	
-            	File file = new File("C:\\Patient");
-            	
-            	if (!file.exists()) {
-            		if (file.mkdir()) {
-            			System.out.println("Directory is created!");
-            		} else {
-            			System.out.println("Failed to create directory!");
-            		}
-            	}
+
             	
             	PrintWriter out = null;
+            	
 				try {
-					out = new PrintWriter("C:\\Patient\\Patient.txt");
+					DateFormat dateFormat1 = new SimpleDateFormat("MM.dd.yyyy");
+					Date date = new Date();
+					DateFormat dateFormat2 = new SimpleDateFormat("HH.mm");
+					Date date2 = new Date();
+					
+					out = new PrintWriter("C:\\Patient1\\Patient_Date_" + dateFormat1.format(date) + "_Time_" + dateFormat2.format(date2) + ".txt");
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				int valu1 = slider1.getValue();
-            	out.println(valu1);
+				
+				String status1;
+				if(valu1 >= 7){
+				 status1 = " Severe";
+				}
+				else{
+				 status1 = " Okay";
+				}
+				
+            	out.println("Pain:                " + valu1 + status1);
             	
 				int valu2 = slider2.getValue();
-            	out.println(valu2);
+				
+				String status2;
+				if(valu2 >= 7){
+				 status2 = " Severe";
+				}
+				else{
+				 status2 = " Okay";
+				}
+				
+				
+            	out.println("Tiredness:           " + valu2 + status2);
             	
 				int valu3 = slider3.getValue();
-            	out.println(valu3);
+				
+				String status3;
+				if(valu3 >= 7){
+				 status3 = " Severe";
+				}
+				else{
+				 status3 = " Okay";
+				}
+				
+				
+            	out.println("Nausea:              " + valu3 + status3);
             	
 				int valu4 = slider4.getValue();
-            	out.println(valu4);
+				
+				String status4;
+				if(valu4 >= 7){
+				 status4 = " Severe";
+				}
+				else{
+				 status4 = " Okay";
+				}
+				
+				
+            	out.println("Depression:          " + valu4 + status4);
             	
 				int valu5 = slider5.getValue();
-            	out.println(valu5);
+				
+				String status5;
+				if(valu5 >= 7){
+				 status5 = " Severe";
+				}
+				else{
+				 status5 = " Okay";
+				}
+				
+				
+            	out.println("Anxiety:             " + valu5 + status5);
             	
 				int valu6 = slider6.getValue();
-            	out.println(valu6);
+				
+				String status6;
+				if(valu6 >= 7){
+				 status6 = " Severe";
+				}
+				else{
+				 status6 = " Okay";
+				}
+				
+				
+            	out.println("Drowsiness:          " + valu6 + status6);
             	
 				int valu7 = slider7.getValue();
-            	out.println(valu7);
+				
+				String status7;
+				if(valu7 >= 7){
+				 status7 = " Severe";
+				}
+				else{
+				 status7 = " Okay";
+				}
+				
+				
+            	out.println("Appetite:            " + valu7 + status7);
             	
     			int valu8 = slider8.getValue();
-            	out.println(valu8);
+    			
+				String status8;
+				if(valu8 >= 7){
+				 status8 = " Severe";
+				}
+				else{
+				 status8 = " Okay";
+				}
+				
+    			
+            	out.println("Wellbeing:           " + valu8 + status8);
             	
     			int valu9 = slider9.getValue();
-            	out.println(valu9);
+    			
+				String status9;
+				if(valu9 >= 7){
+				 status9 = " Severe";
+				}
+				else{
+				 status9 = " Okay";
+				}
+				
+    			
+            	out.println("Shortness of breath: " + valu9 + status9);
             	
     			int valu10 = slider10.getValue();
     			String valu11 = lbl10.getText();
-            	out.println(valu11 + ": " + valu10);
+    			
+				String status10;
+				if(valu10 >= 7){
+				 status10 = " Severe";
+				}
+				else{
+				 status10 = " Okay";
+				}
+				
+    			
+            	out.println(valu11 + ": " + valu10 + status10);
             	
             	
             	
             	
             	
             	out.close();
+            	dispose();
             
             }
          });
@@ -811,7 +913,11 @@ public class patientSlider extends JFrame
         setVisible(true);
     }
  
-    public static void main(String args[])
+    protected Object now(String clock2) {
+		return null;
+	}
+
+	public static void main(String args[])
     {
         new patientSlider();
     }
