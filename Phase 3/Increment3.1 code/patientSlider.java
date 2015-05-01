@@ -9,8 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,9 +24,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import simplelogin.doctor.Actionmessage;
 
 
  
@@ -82,7 +88,7 @@ public class patientSlider extends JFrame
     private JTextField txt9 ;
     private JTextField txt10 ;
     
-	JButton b;
+	JButton b, message;
 
  
     public patientSlider() {
@@ -746,7 +752,6 @@ public class patientSlider extends JFrame
         c.add(panel11);
         b = new JButton("Submit");
 		b.setSize(b.getPreferredSize());
-		//b.addActionListener(new Action());
         panel11.add(b);
         
         b.addActionListener(new ActionListener() {
@@ -754,6 +759,15 @@ public class patientSlider extends JFrame
             	//after submit button is clicked text file is written with symptom results and new text box pops up
             	//confirming submission
             	
+            	File file = new File("C:\\Patient1");
+            	
+            	if (!file.exists()) {
+            		if (file.mkdir()) {
+            			System.out.println("Patient directory is created!");
+            		} else {
+            			System.out.println("Failed to create patient directory!");
+            		}
+            	}
 
             	
             	PrintWriter out = null;
@@ -778,7 +792,7 @@ public class patientSlider extends JFrame
 				 status1 = " Okay";
 				}
 				
-            	out.println("Pain:                " + valu1 + status1);
+            	out.println("Pain:                      " + valu1 + status1);
             	
 				int valu2 = slider2.getValue();
 				
@@ -791,7 +805,7 @@ public class patientSlider extends JFrame
 				}
 				
 				
-            	out.println("Tiredness:           " + valu2 + status2);
+            	out.println("Tiredness:            " + valu2 + status2);
             	
 				int valu3 = slider3.getValue();
 				
@@ -804,7 +818,7 @@ public class patientSlider extends JFrame
 				}
 				
 				
-            	out.println("Nausea:              " + valu3 + status3);
+            	out.println("Nausea:                " + valu3 + status3);
             	
 				int valu4 = slider4.getValue();
 				
@@ -817,7 +831,7 @@ public class patientSlider extends JFrame
 				}
 				
 				
-            	out.println("Depression:          " + valu4 + status4);
+            	out.println("Depression:         " + valu4 + status4);
             	
 				int valu5 = slider5.getValue();
 				
@@ -830,7 +844,7 @@ public class patientSlider extends JFrame
 				}
 				
 				
-            	out.println("Anxiety:             " + valu5 + status5);
+            	out.println("Anxiety:                  " + valu5 + status5);
             	
 				int valu6 = slider6.getValue();
 				
@@ -843,7 +857,7 @@ public class patientSlider extends JFrame
 				}
 				
 				
-            	out.println("Drowsiness:          " + valu6 + status6);
+            	out.println("Drowsiness:        " + valu6 + status6);
             	
 				int valu7 = slider7.getValue();
 				
@@ -856,7 +870,7 @@ public class patientSlider extends JFrame
 				}
 				
 				
-            	out.println("Appetite:            " + valu7 + status7);
+            	out.println("Appetite:                " + valu7 + status7);
             	
     			int valu8 = slider8.getValue();
     			
@@ -868,8 +882,8 @@ public class patientSlider extends JFrame
 				 status8 = " Okay";
 				}
 				
-    			
-            	out.println("Wellbeing:           " + valu8 + status8);
+    			 
+            	out.println("Wellbeing:             " + valu8 + status8);
             	
     			int valu9 = slider9.getValue();
     			
@@ -896,9 +910,13 @@ public class patientSlider extends JFrame
 				}
 				
     			
-            	out.println(valu11 + ": " + valu10 + status10);
+				if(valu11.equals("")){
+					out.println("No optional symptom listed.");
+				}
+				else{
+					out.println(valu11 + ": " + valu10 + status10);
             	
-            	
+				}
             	
             	
             	
@@ -908,7 +926,157 @@ public class patientSlider extends JFrame
             }
          });
         /***********************************************************************************************/
- 
+        message = new JButton("Messages");
+		message.setSize(message.getPreferredSize());
+        panel11.add(message);
+        
+        message.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            	JTextArea field = new JTextArea(10, 10);
+            	
+            	JFrame framemessage = new JFrame ("Patient Messages");
+            	framemessage.setSize(500,300);
+            	framemessage.setLocation(300,200);
+            	framemessage.setLayout(null);
+            	
+            	
+
+            	field.setColumns(25);
+            	field.setSize(field.getPreferredSize());
+            	field.setLocation(100, 10);
+            	field.setEditable(false);
+            	framemessage.add(field);
+            	
+            	
+            	try {
+					BufferedReader in = new BufferedReader(new FileReader("C:\\Patient1message\\Patientmessage.txt"));
+					String symptom1 = null;
+					try {
+						symptom1 = in.readLine();
+						if(symptom1==null){
+							symptom1 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					String symptom2 = null;
+					try {
+						symptom2 = in.readLine();
+						if(symptom2==null){
+							symptom2 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					String symptom3 = null;
+					try {
+						symptom3 = in.readLine();
+						if(symptom3==null){
+							symptom3 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					String symptom4 = null;
+					try {
+						symptom4 = in.readLine();
+						if(symptom4==null){
+							symptom4 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					String symptom5 = null;
+					try {
+						symptom5 = in.readLine();
+						if(symptom5==null){
+							symptom5 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					String symptom6 = null;
+					try {
+						symptom6 = in.readLine();
+						if(symptom6==null){
+							symptom6 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					String symptom7 = null;
+					try {
+						symptom7 = in.readLine();
+						if(symptom7==null){
+							symptom7 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					String symptom8 = null;
+					try {
+						symptom8 = in.readLine();
+						if(symptom8==null){
+							symptom8 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					String symptom9 = null;
+					try {
+						symptom9 = in.readLine();
+						if(symptom9==null){
+							symptom9 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					String symptom10 = null;
+					try {
+						symptom10 = in.readLine();
+						if(symptom10==null){
+							symptom10 = " ";
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					
+				
+					field.append(symptom1 + "\n");
+					field.append(symptom2 + "\n");
+					field.append(symptom3 + "\n");
+					field.append(symptom4 + "\n");
+					field.append(symptom5 + "\n");
+					field.append(symptom6 + "\n");
+					field.append(symptom7 + "\n");
+					field.append(symptom8 + "\n");
+					field.append(symptom9 + "\n");
+					field.append(symptom10 + "\n");
+					
+				} catch (FileNotFoundException e1) {
+					
+					e1.printStackTrace();
+				}
+            	
+
+            	
+
+            	
+            	framemessage.setVisible(true);
+            }
+         });
  
         setVisible(true);
     }

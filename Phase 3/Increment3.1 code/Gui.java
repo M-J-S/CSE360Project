@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import doctorGui.doctor;
+import simplelogin.doctor;
 
 public class Gui  {
 
@@ -71,6 +71,7 @@ public class Gui  {
 		e.setSize(e.getPreferredSize());
 		e.setLocation(300,80);
 		frame.add(e);
+		e.addActionListener(new Action1());
 		
 		
 		frame.setVisible(true);
@@ -83,6 +84,22 @@ public class Gui  {
 	}
 	
 	//button actions
+	
+	static class Action1 implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Welcome to the Team 18 Mayo Clinic Java Application. "
+						+                          "\nUse your patient or doctor login information to log in."
+						+                          "\nIf you are a patient please input the nine listed symptoms."
+						+                          "\nIf you are experiencing a symptom not listed use the tenth symptom box to input your symptom."
+						+                          "\nAfter you input all symptoms hit submit to enter all your data and automatically log out."
+						+                          "\nIf you are a doctor after logging in click browse to find and view the patients symptoms"
+						+                          "\nIf the symptoms are listed as okay the patient is in the recommended range"
+						+                          "\nIf any of the symptoms are severe contact the patient using the message button.");
+					
+				
+			
+		}
+	}
 	static class Action implements ActionListener {
 	    public void actionPerformed(ActionEvent e) {
 	          String nameData = field.getText();
@@ -146,7 +163,9 @@ public class Gui  {
 
 		private void doctor1() {
 
-		    new doctor();
+		   
+		      String[] arguments = new String[] {""};
+		      doctor.main(arguments);
 			
 		}
 
